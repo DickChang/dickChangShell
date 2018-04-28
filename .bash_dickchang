@@ -1,25 +1,45 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-##########################
-# GIT Repository variables
-##########################
+#/**
+# * GIT Repository variables
+# *   for buchanan.dreamhost.com
+#
 # Repository Storage Location
-export GIT_REPOS_ROOT="/home/dickChang/git_repo/"
+#export GIT_REPOS_ROOT="/home/dickChang/git_repo/"
 # GIT Web HTML interface directory
-export GIT_WEB_DIR="/home/dickChang/git.dickchang.com/"
+#export GIT_WEB_DIR="/home/dickChang/git.dickchang.com/"
 # GIT Web install directory
-export GITWEB_INSTALL_DIR="/home/dickChang/gitweb/"
+#export GITWEB_INSTALL_DIR="/home/dickChang/gitweb/"
+#  * GIT Repository variables
+#  */
 
-####
-# Add tmux path to PATH
-####
-export PATH=$PATH:"~/local/bin"
-export LD_LIBRARY_PATH="~/local/lib"
+# /**
+#  * Add tmux path to PATH
+#  *   for buchanan.dreamhost.com
+#
+#export PATH=$PATH:"~/local/bin"
+#export LD_LIBRARY_PATH="~/local/lib"
+#  * Add tmux path to PATH
+#  */
 
-#####
-# Prompt Format
-# For Date/Time formatting see strftime. \D{format}
-#####
+
+# /**
+#  * virtual box: mount the shared drive
+#  *   for VirtualBox VM
+#  *
+#if [ -z "$(df | grep "/home/dickchang/Shared/d")" ]
+# then
+#    echo "french" | sudo -S -p "" mount -t vboxsf D_DRIVE ~/Shared/d
+#fi
+#  * virtual box: mount the shared drive
+#  */
+
+
+
+
+# /**
+#  * Prompt Format
+#  * For Date/Time formatting see strftime. \D{format}
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'
@@ -53,8 +73,8 @@ WHITE='\[\033[01;37m\]'
 PS1="${debian_chroot:+($debian_chroot)}
 ${GREY}\w
 \$(parse_git_branch)${NOCOLOR}[\D{%I:%M:%S %p}] $ "
-##########
-# /Prompt Format
-##########
+
+# * Prompt Format
+# */
 
 
