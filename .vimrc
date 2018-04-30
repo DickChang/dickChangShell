@@ -9,6 +9,7 @@ set shiftwidth=4
 set expandtab
 
 :hi Comment ctermfg=Lightblue
+:hi Search cterm=NONE ctermfg=Black ctermbg=Yellow
 
 " expand vim color pallete when accessed through putty
 set t_Co=256

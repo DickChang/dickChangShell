@@ -1,2 +1,14 @@
 [alias]
 	lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	showtool = "!f() { git difftool -d \"$1\"~1 \"$1\"; }; f"
+
+[winUpdater]
+	recentlySeenVersion = 2.16.3.windows.1
+[user]
+	email = Richard.Chang@todo.com
+	name = Richard Chang
+[diff]
+	tool = meld
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+
