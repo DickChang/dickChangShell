@@ -1,3 +1,8 @@
+# Makefile path
+mkfile_dir := $(abspath $(lastword $(MAKEFILE_LIST)))
+root_dir := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+current_dir := $(notdir $(patsubst %/,%,,$(dir $(mkfile_path))))
+
 #Compiler
 #CC:=gcc
 CC:=g++
