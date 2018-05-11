@@ -1,5 +1,7 @@
 [alias]
-	lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	#lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lg = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset %s'
+	shw = "!f() { git show --name-only $1; }; f"
 	showtool = "!f() { git difftool -d \"$1\"~1 \"$1\"; }; f"
 
 [winUpdater]
@@ -9,6 +11,7 @@
 	name = Richard Chang
 [diff]
 	tool = meld
+[difftool]
+	prompt = false
 [difftool "meld"]
 	cmd = meld "$LOCAL" "$REMOTE"
-
