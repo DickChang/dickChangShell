@@ -9,9 +9,24 @@
 [user]
 	email = Richard.Chang@todo.com
 	name = Richard Chang
+
 [diff]
-	tool = meld
+	#tool = meld
+	#tool = vimdiff
+	tool = kdiff3
 [difftool]
 	prompt = false
 [difftool "meld"]
 	cmd = meld "$LOCAL" "$REMOTE"
+[difftool "kdiff3"]
+	cmd = kdiff3 "$LOCAL" "$REMOTE"
+
+[merge]
+	#tool = meld
+	tool = kdiff3
+[mergetool]
+	prompt = false
+[mergetool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+[mergetool "kdiff3"]
+	cmd = kdiff3 "$LOCAL" "$REMOTE"
