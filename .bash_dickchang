@@ -23,7 +23,7 @@
 #  *
 #if [ -z "$(df | grep "/home/dickchang/Shared/d")" ]
 # then
-#    echo "french" | sudo -S -p "" mount -t vboxsf D_DRIVE ~/Shared/d
+#    echo "french" | sudo -S -p "" mount -t vboxsf D_DRIVE ~/Shared/d > /dev/null
 #fi
 #  * virtual box: mount the shared drive
 #  */
