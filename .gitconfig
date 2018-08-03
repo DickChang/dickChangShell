@@ -33,3 +33,9 @@
 	cmd = meld "$LOCAL" "$REMOTE"
 [mergetool "kdiff3"]
 	cmd = kdiff3 "$LOCAL" "$REMOTE"
+
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+	grep = auto
