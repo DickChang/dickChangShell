@@ -53,3 +53,12 @@ ${GREY}\w
 # * Prompt Format
 # */
 
+# vcXsrv for x server on windows bash
+export DISPLAY=localhost:0.0
+
+# this is for using python's matplotlib plt to plot to windows
+PATH=$PATH:/home/dickchang/.local/bin
+export DOCKER_HOST=tcp://localhost:2375
+export DISPLAY=localhost:0.0
+
+alias dockerTensorFlow="docker run -it --rm -v /d/Work/TensorFlow/:/mnt dickchang/dockertensorflow:latest bash"
