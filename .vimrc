@@ -13,3 +13,7 @@ set expandtab
 
 " expand vim color pallete when accessed through putty
 set t_Co=256
+
+" Use one of the colors in ~/.vim/colors
+set background=dark
+colorscheme elflord
