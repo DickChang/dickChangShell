@@ -62,3 +62,6 @@ export DOCKER_HOST=tcp://localhost:2375
 export DISPLAY=localhost:0.0
 
 alias dockerTensorFlow="docker run -it --rm -v /d/Work/TensorFlow/:/mnt dickchang/dockertensorflow:latest bash"
+
+# this is for the NGINX multristream setup. Open the windows firewall for the ports.
+alias dockerMultistream="docker run -it --rm -p 58052:80 -p 58053:1935 -v /d/Work/dockerShare/:/mnt/ dickchang/multistream:latest bash"
