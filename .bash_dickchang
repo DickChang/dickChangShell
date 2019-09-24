@@ -65,3 +65,15 @@ alias dockerTensorFlow="docker run -it --rm -v /d/Work/TensorFlow/:/mnt dickchan
 
 # this is for the NGINX multristream setup. Open the windows firewall for the ports.
 alias dockerMultistream="docker run -it --rm -p 58052:80 -p 58053:1935 -v /d/Work/dockerShare/:/mnt/ dickchang/multistream:latest bash"
+
+# Print cpp files to pdf
+printCppToPdf()
+{
+    if [ $# -eq 0 ]
+      then
+        echo "No arguments supplied"
+    else
+      enscript -2rG --line-numbers --highlight=cpp --margins=3:3:3:3 --color=1 -c "$1" -o - | ps2pdf - "$1.pdf"
+    fi
+}
+
