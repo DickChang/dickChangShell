@@ -15,17 +15,13 @@ def main():
 
     input_split = os.path.split(input)
     input_dir = input_split[0]
-    rel_playlist_file = open(os.path.join(input_dir,input_filename+"_rel"+input_ext), "w", encoding="utf-8")
+    
     with open(input, encoding="utf8") as input_fd:
-        for line in input_fd:
-            if(line.startswith("﻿#")): # skip the m3u8 start line
-                rel_playlist_file.write(line)
-                continue
-            #line = os.path.normpath(line) # normpath on window always uses '\' instead of '/'
-            line = line.replace("\\", "/") # normpath on window always uses '\' instead of '/'
-            line = os.path.join("./",line)
-            rel_playlist_file.write(line)
-    rel_playlist_file.close()
+        lines = [line.rstrip() for line in input_fd]
+    for i, line in enumerate(lines):
+        for line2 in lines[i+1:]:
+            if(line == line2):
+                print("FOUND DUPLICATE: "+line)
 
     exit()
 
