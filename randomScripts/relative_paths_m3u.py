@@ -18,11 +18,11 @@ def main():
     rel_playlist_file = open(os.path.join(input_dir,input_filename+"_rel"+input_ext), "w", encoding="utf-8")
     with open(input, encoding="utf8") as input_fd:
         for line in input_fd:
-            if(line.startswith("﻿#")):
+            if(line.startswith("﻿#")): # skip the m3u8 start line
                 rel_playlist_file.write(line)
                 continue
             #line = os.path.normpath(line) # normpath on window always uses '\' instead of '/'
-            line = line.replace("\\", "/")
+            line = line.replace("\\", "/") # normpath on window always uses '\' instead of '/'
             line = os.path.join("./",line)
             rel_playlist_file.write(line)
     input_fd.close()
