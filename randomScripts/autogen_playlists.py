@@ -7,7 +7,7 @@ import pandas
 import re
 import sys
 
-valid_extensions = [".mp3", ".m4u"]
+valid_extensions = [".mp3", ".m4a"]
 global_error_tracker = {
     "inputs": 0,
     "missing_tags": 0,
