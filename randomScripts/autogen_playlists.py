@@ -13,7 +13,10 @@ global_error_tracker = {
     "missing_tags": 0,
     "missing_album": 0,
     "missing_track_num": 0,
-    "missing_release_year": 0
+    "missing_release_year": 0,
+    "playlists_created": 0,
+    "folders_entered": 0,
+    "skipped_folders": []
     }
 
 logging.basicConfig(level=logging.INFO,
@@ -52,6 +55,8 @@ def generate_playlist(root_path, folder, playlists_path):
 
     folder_path = os.path.join(root_path, folder)
     logger.info(f'Generating playlist for {folder_path}')
+
+    global_error_tracker['folders_entered'] += 1
 
     error_tracker = {
         "inputs": 0,
@@ -123,6 +128,11 @@ def generate_playlist(root_path, folder, playlists_path):
             song = {"rel_file_path": rel_path, "album": album, "track_num": track_num, "year": year}
             playlist.append(song)
 
+    if len(playlist) == 0:
+        logger.info(f"No valid music files in {folder_path}. Not generating playlist.")
+        global_error_tracker['skipped_folders'].append(folder_path)
+        return
+
     logger.info(f"Total input tracks processed: {error_tracker["inputs"]}")
     logger.info(f"  tracks missing tags: {error_tracker["missing_tags"]}")
     logger.info(f"  tracks missing albums: {error_tracker["missing_album"]}")
@@ -149,6 +159,7 @@ def generate_playlist(root_path, folder, playlists_path):
     for file in playlist['rel_file_path'].tolist():
         playlist_file.write(f"{file}\n")
     playlist_file.close()
+    global_error_tracker['playlists_created'] += 1
 
     logger.info(f'Created playlist {playlist_file_path}')
 
@@ -202,7 +213,11 @@ def main():
     logger.info(f'    Files missing tags {global_error_tracker['missing_tags']}')
     logger.info(f'    Files missing album tag {global_error_tracker['missing_album']}')
     logger.info(f'    Files missing track number in tag {global_error_tracker['missing_track_num']}')
-    logger.info(f'    Files missing release year in tag {global_error_tracker['missing_release_year']}')    
+    logger.info(f'    Files missing release year in tag {global_error_tracker['missing_release_year']}')
+
+    logger.info(f'    Playlists created {global_error_tracker['playlists_created']}')
+    logger.info(f'    Folders entered {global_error_tracker['folders_entered']}')
+    logger.info(f'    Folders without a playlist generated {global_error_tracker['skipped_folders']}')
 
 if __name__ == "__main__":
     main()
